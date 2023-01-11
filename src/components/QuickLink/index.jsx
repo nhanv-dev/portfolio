@@ -1,9 +1,10 @@
-import { useRef, useEffect, } from 'react'
+import {useRef, useEffect,} from 'react'
 
-import { GoPrimitiveDot } from 'react-icons/go'
-export default function QuickLink({ scrollbar }) {
+import {GoPrimitiveDot} from 'react-icons/go'
+
+export default function QuickLink({links, scrollbar}) {
     const containerRef = useRef(null)
-
+    console.log(links)
     function handleScrollQuickLink(e) {
         containerRef.current.style.top = `${window.innerHeight / 2 + e.offset.y}px`
     }
@@ -12,9 +13,9 @@ export default function QuickLink({ scrollbar }) {
         scrollbar.scrollbar.scrollIntoView(document.querySelector(view))
     }
 
-    function activeQuicklink({ offset }) {
+    function activeQuicklink({offset}) {
         const buttons = containerRef.current.querySelectorAll('button')
-        let container = ["#about", "#resume", "#portfolio", "#contact"]
+        let container = [...links.map(link => link.id)]
         container = container.map((item) => document.querySelector(item))
         container.forEach((item, index) => {
             if (item) {
@@ -48,22 +49,22 @@ export default function QuickLink({ scrollbar }) {
     return (
         <div ref={containerRef} className="fixed right-[1rem] translate-x-[0%] translate-y-[-50%] z-[10]">
             <div className="flex flex-col gap-1 w-[max-content] h-[max-content]">
-                <Button scrollIntoView={() => scrollIntoView("#about")} name="About Me"></Button>
-                <Button scrollIntoView={() => scrollIntoView("#resume")} name="My Resume"></Button>
-                <Button scrollIntoView={() => scrollIntoView("#portfolio")} name="Portfolio"></Button>
-                <Button scrollIntoView={() => scrollIntoView("#contact")} name="Contact Me"></Button>
+                {links.map((link, index) => (
+                    <Button key={index} scrollIntoView={() => scrollIntoView(link.id)} name={link.title}></Button>
+                ))}
             </div>
         </div>
     )
 }
 
-const Button = ({ scrollIntoView, name }) => {
+const Button = ({scrollIntoView, name}) => {
     return (
         <button onClick={scrollIntoView}
-            className="group relative z-[100] h-[18px] w-[18px] cursor-pointer rounded-full transition-all duration-[50ms] ease">
-            <GoPrimitiveDot className="text-[16px] absolute top-[50%] left-[50%] translate-x-[-50%] translate-y-[-50%]" />
+                className="group relative z-[100] h-[18px] w-[18px] cursor-pointer rounded-full transition-all duration-[50ms] ease">
+            <GoPrimitiveDot
+                className="text-[16px] absolute top-[50%] left-[50%] translate-x-[-50%] translate-y-[-50%]"/>
             <span onClick={scrollIntoView}
-                className="group-hover:opacity-100 group-hover:translate-y-[-50%] 
+                  className="group-hover:opacity-100 group-hover:translate-y-[-50%]
                         group-hover:visible invisible  translate-y-[0] items-center 
                         opacity-0 absolute top-[50%] left-0 translate-x-[-100%] w-[max-content] 
                         transition-translate duration-300 ease-in-out leading-5 tracking-[1.5px] 

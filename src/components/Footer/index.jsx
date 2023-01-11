@@ -54,10 +54,10 @@ export default function Footer() {
                                 Phone: (+84) 946286951
                             </li>
                             <li className="mb-3 text-[rgba(255,255,255,0.6)] font-semibold text-[.75rem] tracking-[2px]">
-                                Gmail: 19130159@st.hcmuaf.edu.vn
+                                Email: 19130159@st.hcmuaf.edu.vn
                             </li>
                             <li className="mb-3 text-[rgba(255,255,255,0.6)] font-semibold text-[.75rem]  tracking-[2px]">
-                                Gmail: tthanhnhan1512@gmail.com
+                                Email: tthanhnhan1512@gmail.com
                             </li>
                             <li className="mb-3 text-[rgba(255,255,255,0.6)] font-semibold text-[.75rem] tracking-[2px]">
                                 <a href="https://www.facebook.com/nhan.kden/" target="_blank">Facebook: nhan.kden</a>
@@ -82,7 +82,7 @@ export default function Footer() {
                     <p className="mb-3 text-[rgba(255,255,255,0.6)] font-bold text-[.8rem] uppercase tracking-[2px]">@2022 Personal portfolio</p>
                     <p className="mb-3 text-[rgba(255,255,255,0.6)] font-semibold text-[.9rem] tracking-[2px]">
                         Designed by
-                        <a  href="https://www.facebook.com/nhan.kden/" target="_blank" className="text-white">Tran Thanh Nhan</a>
+                        <a  href="https://www.facebook.com/nhan.kden/" target="_blank" className="text-white"> Tran Thanh Nhan</a>
                         </p>
                 </div>
             </div>
