@@ -2,6 +2,7 @@ import {useEffect, useState, useRef} from 'react';
 import {gsap} from "gsap";
 import {ScrollTrigger} from "gsap/ScrollTrigger";
 import {
+    CommoditiesSlide,
     ChitchatSlide,
     ElectronicSlide,
     NoonpostSlide,
@@ -133,6 +134,7 @@ export default function Slider({scrollbar}) {
                         <ChitchatSlide active={activeSlide === 5 ? "active z-1" : "z-[-1]"}/>
                         <SnakeSlide active={activeSlide === 6 ? "active z-1" : "z-[-1]"}/>
                         <ShopioSlide active={activeSlide === 7 ? "active z-1" : "z-[-1]"}/>
+                        <CommoditiesSlide active={activeSlide === 8 ? "active z-1" : "z-[-1]"}/>
                     </div>
                 </div>
             </div>

@@ -4,6 +4,9 @@ import QuickLink from '../../components/QuickLink'
 import scrollbarReducer, {initialState} from '../../components/scrollbarReducer'
 
 import ContactBanner from '../../components/Contact/ContactBanner'
+import Image from "../../components/Image";
+import Todo1 from "../../assets/images/todo-1.png";
+import Todo2 from "../../assets/images/todo-2.png";
 
 export default function TodoList() {
     const links = [
@@ -21,20 +24,28 @@ export default function TodoList() {
 
     return (
         <Layout title="Home" scrollbar={scrollbar}>
-            <section id="my-project" className="bg-[#040404]">
+            <section id="my-project" className="bg-[#121212]">
                 <div className="container py-[120px]">
                     <div
-                        className="px-4 py-2 bg-[#121212] w-[max-content] font-semibold text-[14px] tracking-[3px] text-[#bbb]">
-                        My Work
+                        className="px-4 py-2 bg-[#040404] w-[max-content] font-semibold text-[14px] tracking-[3px] text-[#bbb]">
+                        My Project
                     </div>
                     <div className="mb-[60px]">
                         <h3 className="pb-6 font-bold text-[2.5rem] leading-[3.5rem] tracking-[2px] my-3">
-                            Take a look at my<br/> TodoList project</h3>
+                            TodoList Webapp - React App</h3>
                         <div
                             className="relative block w-full h-[2px] bg-[#ffffff14] after:w-[200px] after:h-[2px] after:bg-[white] after:left-0 after:top-0 after:absolute "/>
                     </div>
                     <div>
-                        Content here
+                        <p className="mb-8 font-medium leading-9 text-[1.05rem]">
+                       This is my first project with React App.
+                        </p>
+                        <div className="mb-8">
+                            <Image alt="spotify" src={Todo1}/>
+                        </div>
+                        <div className="mb-8">
+                            <Image alt="spotify" src={Todo2}/>
+                        </div>
                     </div>
                 </div>
             </section>

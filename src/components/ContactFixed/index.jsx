@@ -60,7 +60,7 @@ export default function ContactFixed({ scrollbar }) {
                     <span><FaRegDotCircle className="text-[14px]" /></span>
                 </button>
 
-                <div ref={contactRef} className="bg-[#101010] z-[-1] translate-x-[100%] w-[100vw] lg:max-w-[70vw] h-[100vh] max-h-[680px] absolute top-[-100px] right-[-30px] transition-transform ease-out duration-[800ms]">
+                <div ref={contactRef} className="py-[20px] bg-[#101010] z-[-1] translate-x-[100%] w-[100vw] lg:max-w-[70vw] h-[100vh] max-h-[680px] absolute top-[-100px] right-[-30px] transition-transform ease-out duration-[800ms]">
                     <div id="contact-fixed" className="block overflow-hidden h-full w-full ">
                         <div className="px-[20px] lg:px-[60px] lg:mr-[100px] md:mt-[80px]">
                             <h5 className="font-normal text-[15px] text-gray-400 tracking-[3px] mb-[10px]">Get in touch</h5>

@@ -5,6 +5,7 @@ import TodoList from "./pages/blogs/TodoList";
 import ChitChat from "./pages/blogs/ChitChat";
 import SnakeGame from "./pages/blogs/SnakeGame";
 import ElectronicStore from "./pages/blogs/ElectronicStore";
+import Commodities from "./pages/blogs/Commodities";
 
 export const projects = [
     {
@@ -14,7 +15,7 @@ export const projects = [
         slide_thumbnail: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRRFRDPgKfWF49p4jowo_snC_9L5H6Jr3VP7Q&usqp=CAU",
         card_title: "Spotify <br/> Music Webapp",
         card_desc: "Brand - Product - Webapp",
-        card_image: "https://www.orissapost.com/wp-content/uploads/2020/02/spotify.jpg",
+        card_image: "https://variety.com/wp-content/uploads/2022/07/Spotify-Earnings.jpg",
 
     },
     {
@@ -68,13 +69,23 @@ export const projects = [
 
     },
     {
-        slug: '/project/shopio', component: Shopio, website: "https://snake-game-5bff8.web.app/",
+        slug: '/project/shopio', component: Shopio, website: "https://ecommerce-d49f8.web.app/",
         slide_number: '08',
-        slide_image: 'https://store-images.s-microsoft.com/image/apps.18353.14473180969187901.3a3be6c8-a839-4def-98cb-b97410c676ab.81b5224b-6b06-476c-9103-3f3c2eecb29a',
-        slide_thumbnail: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTDyZlkkJfmt8Y0KpEuRHuSZqx1AhwL-Z6XInNcceB0X6jLJuSkBRE9-w5MoIQ3qi7TBTw&usqp=CAU',
+        slide_image: 'https://www.tigren.com/blog/wp-content/uploads/2021/11/ecommerce-design-strategies.png',
+        slide_thumbnail: 'https://mona.media/wp-content/uploads/2021/07/ecommerce.png',
         card_title: "Shopio. - React App <br/> eCommerce",
         card_desc: "eCommerce - ReactJS - NodeJS",
-        card_image: "https://store-images.s-microsoft.com/image/apps.18353.14473180969187901.3a3be6c8-a839-4def-98cb-b97410c676ab.81b5224b-6b06-476c-9103-3f3c2eecb29a",
+        card_image: "https://mona.media/wp-content/uploads/2021/07/ecommerce.png",
+
+    },
+    {
+        slug: '/project/data-warehouse', component: Commodities, website: "https://ecommerce-d49f8.web.app/",
+        slide_number: '09',
+        slide_image: 'https://www.tigren.com/blog/wp-content/uploads/2021/11/ecommerce-design-strategies.png',
+        slide_thumbnail: 'https://mona.media/wp-content/uploads/2021/07/ecommerce.png',
+        card_title: "Commodities Mart.<br/> Data Warehouse",
+        card_desc: "ETL - Java - Jsoup - JSP - Servlet",
+        card_image: "https://mona.media/wp-content/uploads/2021/07/ecommerce.png",
 
     },
 ]

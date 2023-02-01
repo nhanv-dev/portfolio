@@ -2,11 +2,9 @@ import { useEffect } from 'react';
 import './style.css'
 function Preloader() {
     useEffect(() => {
-
         setTimeout(() => {
             document.querySelector('.loader').style.display = 'none';
-        }, 2000)
-
+        }, 100)
     }, [])
 
     return (

@@ -1,4 +1,5 @@
-import { FaFacebookF, FaGithub, FaInstagram, FaYoutube } from 'react-icons/fa'
+import {FaFacebookF, FaGithub, FaInstagram, FaYoutube} from 'react-icons/fa'
+
 export default function Footer() {
     return (
         <footer className="pt-[100px] pb-[50px] bg-[#121212] border-t-[1px] border-[#ffffff14]">
@@ -6,21 +7,25 @@ export default function Footer() {
                 <div className="flex flex-wrap items-start mx-[-30px]">
                     <div className="lg:w-[20%] md:w-[50%] w-full px-[30px] mb-[30px]">
                         <h2 className="mb-8 leading-[28px] text-[1.4rem] tracking-wider uppercase font-extrabold">
-                            Portfolio
+                            Port<span className="text-[#14bfb5]">folio.</span>
                         </h2>
-                        <div className="flex gap-3 ">
-                            <p className="border-[.5px] p-2 text-[13px] rounded-full border-gray-500">
-                                <FaFacebookF />
-                            </p>
-                            <p className="border-[.5px] p-2 text-[13px] rounded-full border-gray-500">
-                                <FaGithub />
-                            </p>
-                            <p className="border-[.5px] p-2 text-[13px] rounded-full border-gray-500">
-                                <FaInstagram />
-                            </p>
-                            <p className="border-[.5px] p-2 text-[13px] rounded-full border-gray-500">
-                                <FaYoutube />
-                            </p>
+                        <div className="flex gap-3">
+                            <a href="https://www.facebook.com/nhan.kden/" target="_blank"
+                               className="flex items-center justify-center min-w-[30px] min-h-[30px] rounded-full bg-white text-black text-[1.1rem]">
+                                <FaFacebookF/>
+                            </a>
+                            <a href="https://github.com/nhanv-dev?tab=repositories" target="_blank"
+                               className="flex items-center justify-center min-w-[30px] min-h-[30px] rounded-full bg-white text-black text-[1.1rem]">
+                                <FaGithub/>
+                            </a>
+                            <div
+                                className="cursor-not-allowed flex items-center justify-center min-w-[30px] min-h-[30px] rounded-full bg-white text-black text-[1.1rem]">
+                                <FaInstagram/>
+                            </div>
+                            <div
+                                className="cursor-not-allowed flex items-center justify-center min-w-[30px] min-h-[30px] rounded-full bg-white text-black text-[1.1rem]">
+                                <FaYoutube/>
+                            </div>
                         </div>
                     </div>
                     <div className="lg:w-[20%] md:w-[50%] w-full px-[30px] mb-[30px]">
@@ -54,10 +59,10 @@ export default function Footer() {
                                 Phone: (+84) 946286951
                             </li>
                             <li className="mb-3 text-[rgba(255,255,255,0.6)] font-semibold text-[.75rem] tracking-[2px]">
-                                Email: 19130159@st.hcmuaf.edu.vn
+                                Email 1: 19130159@st.hcmuaf.edu.vn
                             </li>
                             <li className="mb-3 text-[rgba(255,255,255,0.6)] font-semibold text-[.75rem]  tracking-[2px]">
-                                Email: tthanhnhan1512@gmail.com
+                                Email 2: tthanhnhan1512@gmail.com
                             </li>
                             <li className="mb-3 text-[rgba(255,255,255,0.6)] font-semibold text-[.75rem] tracking-[2px]">
                                 <a href="https://www.facebook.com/nhan.kden/" target="_blank">Facebook: nhan.kden</a>
@@ -79,11 +84,13 @@ export default function Footer() {
                     </div>
                 </div>
                 <div className="text-center pt-10 border-t-[.5px] mt-10 border-[rgba(255,255,255,0.1)]">
-                    <p className="mb-3 text-[rgba(255,255,255,0.6)] font-bold text-[.8rem] uppercase tracking-[2px]">@2022 Personal portfolio</p>
+                    <p className="mb-3 text-[rgba(255,255,255,0.6)] font-bold text-[.8rem] uppercase tracking-[2px]">@2022
+                        Personal portfolio</p>
                     <p className="mb-3 text-[rgba(255,255,255,0.6)] font-semibold text-[.9rem] tracking-[2px]">
                         Designed by
-                        <a  href="https://www.facebook.com/nhan.kden/" target="_blank" className="text-white"> Tran Thanh Nhan</a>
-                        </p>
+                        <a href="https://www.facebook.com/nhan.kden/" target="_blank" className="text-white"> Tran Thanh
+                            Nhan</a>
+                    </p>
                 </div>
             </div>
         </footer>

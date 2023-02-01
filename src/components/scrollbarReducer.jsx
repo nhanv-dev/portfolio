@@ -1,6 +1,7 @@
-import Scrollbar, { ScrollbarPlugin } from 'smooth-scrollbar';
+import Scrollbar, {ScrollbarPlugin} from 'smooth-scrollbar';
+
 const options = {
-    damping: 0.085,
+    damping: 0.05,
     thumbMinSize: 20,
     renderByPixels: true,
     continuousScrolling: true,
@@ -21,9 +22,10 @@ class ModalPlugin extends ScrollbarPlugin {
     };
 
     transformDelta(delta) {
-        return this.options.open ? { x: 0, y: 0 } : delta;
+        return this.options.open ? {x: 0, y: 0} : delta;
     }
 }
+
 class DisableScrollPlugin extends ScrollbarPlugin {
     static pluginName = 'disableScroll';
 
@@ -36,9 +38,10 @@ class DisableScrollPlugin extends ScrollbarPlugin {
             delta[this.options.direction] = 0;
         }
 
-        return { ...delta };
+        return {...delta};
     }
 }
+
 Scrollbar.use(ModalPlugin,);
 Scrollbar.use(DisableScrollPlugin);
 
@@ -53,10 +56,10 @@ const scrollbarReducer = (state = initialState, action) => {
                 state[action.scrollbar] = Scrollbar.init(action.container, action.options || options)
                 state[action.scrollbar].track.xAxis.element.remove()
             }
-            return { ...state }
+            return {...state}
 
         default:
-            return { ...state }
+            return {...state}
     }
 }
 export default scrollbarReducer

@@ -1,6 +1,7 @@
 import React from 'react';
 import {Link} from "react-router-dom";
 import {projects} from "../../data";
+import {BiSearch} from "react-icons/bi";
 
 export default function Tabs() {
 
@@ -31,6 +32,13 @@ const Card = ({item, index}) => {
                     className="absolute top-0 left-0 right-0 bottom-0 after:absolute after:top-[-1px] after:left-[-1px] after:right-[-1px] after:bottom-[-1px] after:bg-black after:opacity-[.3]">
                     <div style={{backgroundImage: `url(${item.card_image})`}}
                          className="w-full h-full bg-cover bg-no-repeat bg-center"/>
+                    <div
+                        className="absolute top-[50%] left-[50%] translate-x-[-50%] translate-y-[-50%] z-10 opacity-0 group-hover:opacity-100 transition-all">
+                        <Link to={item.slug}
+                              className="backdrop-blur-md flex items-center justify-center min-w-[40px] min-h-[40px] bg-white/80 rounded-full text-[#000] text-[1.45rem]">
+                            <BiSearch className="relative top-[1px] left-[.75px] "/>
+                        </Link>
+                    </div>
                 </div>
                 <div
                     className="absolute top-[-1px] left-[-1px] bottom-[-1px] w-0 group-hover:w-[10px] bg-black transition-all duration-500"/>
@@ -49,9 +57,8 @@ const Card = ({item, index}) => {
                     className="relative overflow-hidden font-semibold text-[14px] leading-6 mt-2 text-[#14bfb5] font-bold text-[15px]">
                     <p className="translate-y-[0] group-hover:translate-y-[-100%] transition-all duration-300 ease-in-out"
                        dangerouslySetInnerHTML={{__html: item.card_desc}}></p>
-                    <a href={item.website} target="_blank"
-                       className="absolute top-[100%] left-0 group-hover:translate-y-[-100%] transition-all duration-300 ease-in-out"
-                       rel="noreferrer">
+                    <a href={item.website} target="_blank" rel="noreferrer"
+                       className="block absolute top-[100%] left-0 group-hover:translate-y-[-100%] transition-all duration-300 ease-in-out">
                         Visit Website
                     </a>
                 </div>
