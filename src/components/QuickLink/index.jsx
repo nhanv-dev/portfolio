@@ -4,7 +4,7 @@ import {GoPrimitiveDot} from 'react-icons/go'
 
 export default function QuickLink({links, scrollbar}) {
     const containerRef = useRef(null)
-    console.log(links)
+
     function handleScrollQuickLink(e) {
         containerRef.current.style.top = `${window.innerHeight / 2 + e.offset.y}px`
     }
@@ -13,33 +13,31 @@ export default function QuickLink({links, scrollbar}) {
         scrollbar.scrollbar.scrollIntoView(document.querySelector(view))
     }
 
-    function activeQuicklink({offset}) {
-        const buttons = containerRef.current.querySelectorAll('button')
-        let container = [...links.map(link => link.id)]
-        container = container.map((item) => document.querySelector(item))
-        container.forEach((item, index) => {
-            if (item) {
-                let isActive = offset.y >= item.offsetTop - 300 && (container[index + 1] ? offset.y < container[index + 1].offsetTop - 300 : true)
-                if (isActive) {
-                    buttons[index].classList.add('border-[2px]')
-                } else {
-                    buttons[index].classList.remove('border-[2px]')
-                }
-            }
-
-        })
-    }
 
     useEffect(() => {
-        scrollbar.scrollbar?.addListener(handleScrollQuickLink)
-        scrollbar.scrollbar?.addListener(activeQuicklink)
+        function activeQuickLink({offset}) {
+            const buttons = containerRef.current.querySelectorAll('button')
+            let container = [...links.map(link => link.id)]
+            container = container.map((item) => document.querySelector(item))
+            container.forEach((item, index) => {
+                if (item) {
+                    let isActive = offset.y >= item.offsetTop - 300 && (container[index + 1] ? offset.y < container[index + 1].offsetTop - 300 : true)
+                    if (isActive) {
+                        buttons[index].classList.add('border-[2px]')
+                    } else {
+                        buttons[index].classList.remove('border-[2px]')
+                    }
+                }
 
+            })
+        }
+        scrollbar.scrollbar?.addListener(handleScrollQuickLink)
+        scrollbar.scrollbar?.addListener(activeQuickLink)
         return () => {
             scrollbar.scrollbar?.removeListener(handleScrollQuickLink)
-            scrollbar.scrollbar?.removeListener(activeQuicklink)
+            scrollbar.scrollbar?.removeListener(activeQuickLink)
         }
-
-    }, [scrollbar.scrollbar])
+    }, [links, scrollbar.scrollbar])
 
     useEffect(() => {
         const position = window.innerHeight / 2

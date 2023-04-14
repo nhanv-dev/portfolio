@@ -1,9 +1,9 @@
-import {useEffect, useState, useRef} from 'react';
+import {useEffect, useRef, useState} from 'react';
 import {gsap} from "gsap";
 import {ScrollTrigger} from "gsap/ScrollTrigger";
 import {
-    CommoditiesSlide,
     ChitchatSlide,
+    CommoditiesSlide,
     ElectronicSlide,
     NoonpostSlide,
     ShopioSlide,
@@ -12,7 +12,7 @@ import {
     TodoSlide,
     WelcomeSlide
 } from './Slides'
-import {BiChevronRight, BiChevronLeft} from 'react-icons/bi'
+import {BiChevronLeft, BiChevronRight} from 'react-icons/bi'
 import Image from '../../assets/images/astronaut.jpg'
 import {projects} from "../../data";
 import './style.css'
@@ -84,7 +84,6 @@ export default function Slider({scrollbar}) {
 
     return (
         <section className="h-[100vh] w-full">
-
             <div id="slider" className="h-full w-full flex relative overflow-hidden">
                 <div className="flex-1 relative hidden lg:block">
                     <div
@@ -96,7 +95,8 @@ export default function Slider({scrollbar}) {
                                     image="https://c4.wallpaperflare.com/wallpaper/590/129/145/cosmonauts-butterflies-space-fantasy-gray-astronaut-with-butterflies-painting-wallpaper-preview.jpg"/>
 
                             {projects.map((project, index) => (
-                                <Button number={project.slide_number} active={activeSlide === index + 1 && "active"}
+                                <Button key={index} number={project.slide_number}
+                                        active={activeSlide === index + 1 && "active"}
                                         handleClick={() => setActiveSlide(index + 1)}
                                         image={project.slide_thumbnail}/>
                             ))}
@@ -113,7 +113,8 @@ export default function Slider({scrollbar}) {
                         className="absolute bottom-[50px] right-[50px] flex gap-5 transition-all linear duration-[800ms]">
                         <button onClick={() => {
                             setActiveSlide(activeSlide - 1 < 0 ? 0 : activeSlide - 1)
-                        }} className="w-[40px] h-[40px] z-[10] border-[1px] flex items-center justify-center rounded-full hover:scale-[1.2] transition-all duration-300 ease-in-out">
+                        }}
+                                className="w-[40px] h-[40px] z-[10] border-[1px] flex items-center justify-center rounded-full hover:scale-[1.2] transition-all duration-300 ease-in-out">
                             <BiChevronLeft className="text-[24px] leading-[40px] font-extrabold"/>
                         </button>
                         <button
@@ -127,14 +128,10 @@ export default function Slider({scrollbar}) {
                     className="absolute top-[50%] translate-y-[-55%] bottom-0 lg:left-[15%] xl:w-[1200px] lg:w-[600px] md:w-[600px] sm:w-[500px] w-[100%]">
                     <div id="slideText" className="relative w-[100%]">
                         <WelcomeSlide active={activeSlide === 0 ? "active z-1" : "z-[-1]"}/>
-                        <SpotifySlide active={activeSlide === 1 ? "active z-1" : "z-[-1]"}/>
-                        <TodoSlide active={activeSlide === 2 ? "active z-1" : "z-[-1]"}/>
-                        <NoonpostSlide active={activeSlide === 3 ? "active z-1" : "z-[-1]"}/>
-                        <ElectronicSlide active={activeSlide === 4 ? "active z-1" : "z-[-1]"}/>
-                        <ChitchatSlide active={activeSlide === 5 ? "active z-1" : "z-[-1]"}/>
-                        <SnakeSlide active={activeSlide === 6 ? "active z-1" : "z-[-1]"}/>
-                        <ShopioSlide active={activeSlide === 7 ? "active z-1" : "z-[-1]"}/>
-                        <CommoditiesSlide active={activeSlide === 8 ? "active z-1" : "z-[-1]"}/>
+                        {projects.map(project => (
+                            <project.slide_component project={project} key={project.id}
+                                                     active={activeSlide + 1 === project.id ? "active z-1" : "z-[-1]"}/>
+                        ))}
                     </div>
                 </div>
             </div>

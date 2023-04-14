@@ -25,7 +25,7 @@ export function WelcomeSlide({active}) {
                     My major is information technology. I am a front-end developer.
                 </p>
             </div>
-            <a href={"https://todos-list-f2750.web.app/"} target={"_blank"}
+            <a href={"https://todos-list-f2750.web.app/"} target="_blank" rel="noreferrer"
                className="hover:scale-[1.05] transition-all duration-300 ease-in-out inline-flex items-center justify-center gap-3 rounded-full px-3 py-2 max-w-[250px] border-[2px] border-[rgba(255,255,255,0.2)] focus:outline-none">
                 <span
                     className="w-[30px] h-[30px] border-2 bg-white text-black rounded-full flex items-center justify-center">
@@ -37,7 +37,7 @@ export function WelcomeSlide({active}) {
     )
 }
 
-export function SpotifySlide({active}) {
+export function SpotifySlide({active, project}) {
 
     return (
         <div
@@ -45,7 +45,7 @@ export function SpotifySlide({active}) {
             <div className="w-full h-full flex items-center mb-5">
                 <span className="inline-block mt-1 mr-5 w-[40px] h-[2px] bg-[rgba(255,255,255,.1)]"></span>
                 <span
-                    className="font-[600] text-[.8rem] md:text-[1rem] tracking-[2px] capitalize color-white opacity-80">Project #01</span>
+                    className="font-[600] text-[.8rem] md:text-[1rem] tracking-[2px] capitalize color-white opacity-80">Project #{project.project_number}</span>
             </div>
             <svg width="100%" height="100px" className="hidden lg:flex">
                 <text x="0%" y="60%" textAnchor="left">
@@ -97,7 +97,7 @@ export function SpotifySlide({active}) {
     )
 }
 
-export function TodoSlide({active}) {
+export function TodoSlide({active, project}) {
 
     return (
         <div
@@ -105,7 +105,7 @@ export function TodoSlide({active}) {
             <div className="w-full h-full flex items-center mb-5">
                 <span className="inline-block mt-1 mr-5 w-[40px] h-[2px] bg-[rgba(255,255,255,.1)]"></span>
                 <span
-                    className="font-[600] text-[.8rem] md:text-[1rem] tracking-[2px] capitalize color-white opacity-80">Project #02</span>
+                    className="font-[600] text-[.8rem] md:text-[1rem] tracking-[2px] capitalize color-white opacity-80">Project #{project.project_number}</span>
             </div>
             <svg width="100%" height="100px">
                 <text x="0%" y="60%" textAnchor="left" className="">
@@ -147,15 +147,14 @@ export function TodoSlide({active}) {
     )
 }
 
-
-export function NoonpostSlide({active}) {
+export function NoonpostSlide({active, project}) {
     return (
         <div
             className={active + " slide-text p-10 opacity-0 absolute left-0 top-0 transition-all delay-100 duration-[300ms] ease-in-out w-full"}>
             <div className="w-full h-full flex items-center mb-5">
                 <span className="inline-block mt-1 mr-5 w-[40px] h-[2px] bg-[rgba(255,255,255,.1)]"></span>
                 <span
-                    className="font-[600] text-[.8rem] md:text-[1rem] tracking-[2px] capitalize color-white opacity-80">Project #03</span>
+                    className="font-[600] text-[.8rem] md:text-[1rem] tracking-[2px] capitalize color-white opacity-80">Project #{project.project_number}</span>
             </div>
             <svg width="100%" height="100px">
                 <text x="0%" y="60%" textAnchor="left">
@@ -197,15 +196,14 @@ export function NoonpostSlide({active}) {
     )
 }
 
-
-export function ElectronicSlide({active}) {
+export function ElectronicSlide({active, project}) {
     return (
         <div
             className={active + " slide-text p-10 opacity-0 absolute left-0 top-0 transition-all delay-100 duration-[300ms] ease-in-out w-full"}>
             <div className="w-full h-full flex items-center mb-5">
                 <span className="inline-block mt-1 mr-5 w-[40px] h-[2px] bg-[rgba(255,255,255,.1)]"></span>
                 <span
-                    className="font-[600] text-[.8rem] md:text-[1rem] tracking-[2px] capitalize color-white opacity-80">Project #04</span>
+                    className="font-[600] text-[.8rem] md:text-[1rem] tracking-[2px] capitalize color-white opacity-80">Project #{project.project_number}</span>
             </div>
             <svg width="100%" height="100px">
                 <text x="0%" y="60%" textAnchor="left">
@@ -246,14 +244,14 @@ export function ElectronicSlide({active}) {
     )
 }
 
-export function ChitchatSlide({active}) {
+export function ChitchatSlide({active, project}) {
     return (
         <div
             className={active + " slide-text p-10 opacity-0 absolute left-0 top-0 transition-all delay-100 duration-[300ms] ease-in-out w-full"}>
             <div className="w-full h-full flex items-center mb-5">
                 <span className="inline-block mt-1 mr-5 w-[40px] h-[2px] bg-[rgba(255,255,255,.1)]"></span>
                 <span
-                    className="font-[600] text-[.8rem] md:text-[1rem] tracking-[2px] capitalize color-white opacity-80">Project #05</span>
+                    className="font-[600] text-[.8rem] md:text-[1rem] tracking-[2px] capitalize color-white opacity-80">Project #{project.project_number}</span>
             </div>
             <svg width="100%" height="100px">
                 <text x="0%" y="60%" textAnchor="left">
@@ -282,7 +280,7 @@ export function ChitchatSlide({active}) {
                     </div>
                 </div>
             </div>
-            <a href={"https://todos-list-f2750.web.app/"} target={"_blank"}
+            <a href={"https://todos-list-f2750.web.app/"} target="_blank" rel="noreferrer"
                className="hover:scale-[1.05] transition-all duration-300 ease-in-out inline-flex items-center justify-center gap-3 rounded-full px-3 py-2 max-w-[250px] border-[2px] border-[rgba(255,255,255,0.2)] focus:outline-none">
                 <span
                     className="w-[30px] h-[30px] border-2 bg-white text-black rounded-full flex items-center justify-center">
@@ -294,14 +292,14 @@ export function ChitchatSlide({active}) {
     )
 }
 
-export function SnakeSlide({active}) {
+export function SnakeSlide({active, project}) {
     return (
         <div
             className={active + " slide-text p-10 opacity-0 absolute left-0 top-0 transition-all delay-100 duration-[300ms] ease-in-out w-full"}>
             <div className="w-full h-full flex items-center mb-5">
                 <span className="inline-block mt-1 mr-5 w-[40px] h-[2px] bg-[rgba(255,255,255,.1)]"></span>
                 <span
-                    className="font-[600] text-[.8rem] md:text-[1rem] tracking-[2px] capitalize color-white opacity-80">Project #06</span>
+                    className="font-[600] text-[.8rem] md:text-[1rem] tracking-[2px] capitalize color-white opacity-80">Project #{project.project_number}</span>
             </div>
             <svg width="100%" height="100px">
                 <text x="0%" y="60%" textAnchor="left">
@@ -343,15 +341,14 @@ export function SnakeSlide({active}) {
     )
 }
 
-
-export function ShopioSlide({active}) {
+export function ShopioSlide({active, project}) {
     return (
         <div
             className={active + " slide-text p-10 opacity-0 absolute left-0 top-0 transition-all delay-100 duration-[300ms] ease-in-out w-full"}>
             <div className="w-full h-full flex items-center mb-5">
                 <span className="inline-block mt-1 mr-5 w-[40px] h-[2px] bg-[rgba(255,255,255,.1)]"></span>
                 <span
-                    className="font-[600] text-[.8rem] md:text-[1rem] tracking-[2px] capitalize color-white opacity-80">Project #07</span>
+                    className="font-[600] text-[.8rem] md:text-[1rem] tracking-[2px] capitalize color-white opacity-80">Project #{project.project_number}</span>
             </div>
             <svg width="100%" height="100px">
                 <text x="0%" y="60%" textAnchor="left">
@@ -393,14 +390,14 @@ export function ShopioSlide({active}) {
     )
 }
 
-export function CommoditiesSlide({active}) {
+export function CommoditiesSlide({active, project}) {
     return (
         <div
             className={active + " slide-text p-10 opacity-0 absolute left-0 top-0 transition-all delay-100 duration-[300ms] ease-in-out w-full"}>
             <div className="w-full h-full flex items-center mb-5">
                 <span className="inline-block mt-1 mr-5 w-[40px] h-[2px] bg-[rgba(255,255,255,.1)]"></span>
                 <span
-                    className="font-[600] text-[.8rem] md:text-[1rem] tracking-[2px] capitalize color-white opacity-80">Project #08</span>
+                    className="font-[600] text-[.8rem] md:text-[1rem] tracking-[2px] capitalize color-white opacity-80">Project #{project.project_number}</span>
             </div>
             <svg width="100%" height="100px">
                 <text x="0%" y="60%" textAnchor="left">

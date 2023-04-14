@@ -1,4 +1,4 @@
-import { useEffect, useRef, useState, useReducer } from 'react'
+import {useEffect, useRef, useState} from 'react'
 import easing from 'easing-js';
 
 export default function ScrollTop({ scrollbar }) {
@@ -38,8 +38,8 @@ export default function ScrollTop({ scrollbar }) {
     }, [scrollbar.scrollbar])
 
     return (
-        <div ref={containerRef} onClick={scrollTop} className="cursor-pointer hidden absolute right-[1.5rem] top-[85vh] z-[1000] opacity-0 transition-opacity ease duration-[1000ms]">
-            <button ref={buttonRef} key={percent} className="cursor-pointer z-[10001] w-[70px] h-[70px] rounded-full text-gray-300 font-bold transition-all ease-in-out duration-[2000ms]">
+        <div ref={containerRef} onClick={scrollTop} className="cursor-pointer hidden absolute right-[1.5rem] top-[85vh] z-[100] opacity-0 transition-opacity ease duration-[1000ms]">
+            <button ref={buttonRef} key={percent} className="cursor-pointer z-[101] w-[70px] h-[70px] rounded-full text-gray-300 font-bold transition-all ease-in-out duration-[2000ms]">
                 {percent}%
             </button>
             <svg ref={svgRef} className="z-10 transition-transform ease-out duration-[2000ms] block w-full h-full fill-gray-300 absolute left-0 top-0"

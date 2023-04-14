@@ -15,9 +15,8 @@ export default function App() {
         {id: "#portfolio", title: "Portfolio"},
         {id: "#contact", title: "Contact Me"}
     ]
-    const [scrollbar, dispatch] = useReducer(
-        scrollbarReducer, initialState
-    )
+    const [scrollbar, dispatch] = useReducer(scrollbarReducer, initialState)
+
     useEffect(() => {
         dispatch({type: 'INIT', container: document.querySelector('#main-content'), scrollbar: 'scrollbar'})
         dispatch({type: 'INIT', container: document.querySelector('#contact-fixed'), scrollbar: 'contactFixed'})
@@ -38,9 +37,10 @@ export default function App() {
                         <h3 className="pb-6 font-bold text-[2.5rem] leading-[3.5rem] tracking-[2px] my-3">
                             Take a look at my<br/> latest projects
                         </h3>
-                        <div className="relative block w-full h-[2px] bg-[#ffffff14] after:w-[200px] after:h-[2px] after:bg-[white] after:left-0 after:top-0 after:absolute "/>
+                        <div
+                            className="relative block w-full h-[2px] bg-[#ffffff14] after:w-[200px] after:h-[2px] after:bg-[white] after:left-0 after:top-0 after:absolute "/>
                     </div>
-                    <Tabs/>
+                    <Tabs scrollbar={scrollbar}/>
                 </div>
             </section>
             <section id="contact">

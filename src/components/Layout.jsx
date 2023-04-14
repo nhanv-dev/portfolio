@@ -14,7 +14,7 @@ const Layout = ({ title, children, scrollbar }) => {
 
 
     return (
-        <>
+        <div>
             <Preloader />
             <div id="main-content">
                 <div className="h-full w-full relative text-white">
@@ -26,7 +26,7 @@ const Layout = ({ title, children, scrollbar }) => {
                 </div>
             </div>
             <CustomCursor />
-        </>
+        </div>
     )
 }
 

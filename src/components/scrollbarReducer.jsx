@@ -21,7 +21,7 @@ class ModalPlugin extends ScrollbarPlugin {
         open: false,
     };
 
-    transformDelta(delta) {
+    transformDelta(delta, e) {
         return this.options.open ? {x: 0, y: 0} : delta;
     }
 }
@@ -33,7 +33,7 @@ class DisableScrollPlugin extends ScrollbarPlugin {
         direction: 'x',
     };
 
-    transformDelta(delta) {
+    transformDelta(delta, e) {
         if (this.options.direction) {
             delta[this.options.direction] = 0;
         }
