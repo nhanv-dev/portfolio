@@ -22,7 +22,8 @@ export default function Tabs({scrollbar}) {
     }
 
     function handleScrollingTabs(e) {
-        setTop(e.offset.y)
+        if (containerRef?.current?.style) containerRef.current.style.transform = `translate3d(0,${e.offset.y}px,0)`
+        setTop(e.offset.y);
     }
 
     useEffect(() => {
@@ -42,7 +43,7 @@ export default function Tabs({scrollbar}) {
                      className={`${active !== -1 ? 'visible opacity-100' : 'invisible opacity-0'} transition-opacity duration-500 backdrop-blur w-[100vw] h-[100vh] left-0 top-0 fixed z-[1000] flex items-center bg-[rgba(0,0,0,0.7)]`}>
                     <Slide active={active} projects={projects} hidden={hidden}/>
                     <button onClick={hidden}
-                            className="absolute right-[22px] top-[22px] w-[28px] h-[28px] rounded-full bg-white text-black flex items-center justify-center ">
+                            className="z-[100] cursor-pointer absolute right-[22px] top-[22px] w-[28px] h-[28px] rounded-full bg-white text-black flex items-center justify-center ">
                         <IoClose className="text-2xl"/>
                     </button>
                     <button onClick={hidden} className="absolute left-0 right-0 top-0 bottom-0 z-[1] cursor-none"/>
@@ -97,12 +98,14 @@ const Slide = ({active, projects, hidden}) => {
             setImage(project.images[index])
         }
     }, [index])
+
     const handleNextImage = () => {
         if (index === project.images.length - 1)
             setIndex(0)
         else
             setIndex(prev => prev + 1)
     }
+
     const handlePrevImage = () => {
         if (index === 0)
             setIndex(project.images.length - 1)
@@ -119,10 +122,8 @@ const Slide = ({active, projects, hidden}) => {
                 </button>
                 {image &&
                     <div
-                        className="relative z-50 transition-all duration-300 w-[1100px] h-[500px] flex items-center justify-center rounded-md overflow-hidden">
-                        <div className="w-auto h-full border border-white rounded-md overflow-hidden">
-                            <Image image={image} className={"w-full h-full rounded-md"}/>
-                        </div>
+                        className="relative z-50 transition-all duration-300 flex items-center justify-center rounded-md border border-white">
+                        <Image image={image} className={"w-auto h-[500px] rounded-md"}/>
                     </div>
                 }
                 <button onClick={handleNextImage}
@@ -133,8 +134,8 @@ const Slide = ({active, projects, hidden}) => {
             <div className="flex items-center justify-center gap-2">
                 {project.images.map((img, index) => (
                     <button key={index} onClick={() => setIndex(index)}
-                            className={`${img === image ? 'border-white' : 'border-black'} relative z-50 transition-all border h-[80px] flex items-center justify-center rounded-md`}>
-                        <Image image={img} className={"w-full h-full rounded-md"}/>
+                            className={`${img === image ? 'border-white' : 'border-[transparent]'} relative z-50 transition-all border min-h-[80px] flex items-center justify-center rounded-md`}>
+                        <Image image={img} className={"min-h-[80px] max-h-[80px] rounded-md"}/>
                     </button>
                 ))}
             </div>
@@ -144,10 +145,10 @@ const Slide = ({active, projects, hidden}) => {
 const Image = ({image, className}) => {
     const [didLoad, setLoad] = useState(false);
 
-    const style = didLoad ? {} : {visibility: 'hidden'};
 
     return (
-        <img src={`${image}`} alt={"project"} className={`${className}`} style={style} onLoad={() => setLoad(true)}/>
+        <img src={`${image}`} alt={"project"} className={`${didLoad ? '' : 'blur'} ${className}`}
+             onLoad={() => setLoad(true)}/>
     )
 }
 const Card = ({item, index, show}) => {
@@ -185,9 +186,9 @@ const Card = ({item, index, show}) => {
                     className="absolute left-[-1px] right-[-1px] bottom-[-1px] h-0 group-hover:h-[10px] bg-black transition-all duration-500"/>
             </button>
             <div className="pl-4 border-l-2">
-                <Link to={item.slug} className="text-[1.25rem] font-bold mb-1 cursor-pointer outline-none" tabIndex={-1}
-                      dangerouslySetInnerHTML={{__html: item.card_title}}>
-                </Link>
+                <p className="text-[1.25rem] font-bold mb-1 cursor-pointer outline-none" tabIndex={-1}
+                   dangerouslySetInnerHTML={{__html: item.card_title}}>
+                </p>
                 <div
                     className="relative overflow-hidden leading-6 mt-2 text-[#14bfb5] font-bold text-[14px]">
                     <p className="translate-y-[0] group-hover:translate-y-[-100%] transition-all duration-300 ease-in-out"

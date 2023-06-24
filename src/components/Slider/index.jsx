@@ -1,19 +1,8 @@
 import {useEffect, useRef, useState} from 'react';
 import {gsap} from "gsap";
 import {ScrollTrigger} from "gsap/ScrollTrigger";
-import {
-    ChitchatSlide,
-    CommoditiesSlide,
-    ElectronicSlide,
-    NoonpostSlide,
-    ShopioSlide,
-    SnakeSlide,
-    SpotifySlide,
-    TodoSlide,
-    WelcomeSlide
-} from './Slides'
+import {WelcomeSlide} from './Slides'
 import {BiChevronLeft, BiChevronRight} from 'react-icons/bi'
-import Image from '../../assets/images/astronaut.jpg'
 import {projects} from "../../data";
 import './style.css'
 
@@ -92,7 +81,7 @@ export default function Slider({scrollbar}) {
                              className="flex flex-col gap-[10px] transition-all duration-1000 ease-in-out">
                             <Button number="01" active={activeSlide === 0 && "active"}
                                     handleClick={() => setActiveSlide(0)}
-                                    image="https://c4.wallpaperflare.com/wallpaper/590/129/145/cosmonauts-butterflies-space-fantasy-gray-astronaut-with-butterflies-painting-wallpaper-preview.jpg"/>
+                                    image="https://firebasestorage.googleapis.com/v0/b/personal-portfolio-9a2f1.appspot.com/o/web%2Fastronaut-thumbbail.jpg?alt=media&token=fa0b2eff-ea5d-475d-9953-42a5c27f48f0"/>
 
                             {projects.map((project, index) => (
                                 <Button key={index} number={project.slide_number}
@@ -104,9 +93,12 @@ export default function Slider({scrollbar}) {
                     </div>
                 </div>
                 <div id="slideImage" className="w-full lg:w-[75%] h-full relative overflow-hidden">
-                    <SlideImage number="01" active={activeSlide} image={Image}/>
+                    <SlideImage number="01" active={activeSlide}
+                                image={'https://firebasestorage.googleapis.com/v0/b/personal-portfolio-9a2f1.appspot.com/o/web%2Fastronaut.jpg?alt=media&token=d3ad0965-b991-499a-ab95-257a8550619d'}/>
                     {projects.map((project, index) => (
-                        <SlideImage key={index} number={project.slide_number} active={activeSlide}
+                        <SlideImage key={index}
+                                    number={project.slide_number}
+                                    active={activeSlide}
                                     image={project.slide_image}/>
                     ))}
                     <div

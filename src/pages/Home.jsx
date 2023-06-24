@@ -19,6 +19,8 @@ export default function App() {
 
     useEffect(() => {
         dispatch({type: 'INIT', container: document.querySelector('#main-content'), scrollbar: 'scrollbar'})
+    }, [])
+    useEffect(() => {
         dispatch({type: 'INIT', container: document.querySelector('#contact-fixed'), scrollbar: 'contactFixed'})
     }, [])
 
