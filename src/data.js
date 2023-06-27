@@ -89,16 +89,15 @@ export const projects = [
         card_desc: "eCommerce - ReactJS - NodeJS",
         card_image: "https://mona.media/wp-content/uploads/2021/07/ecommerce.png",
         images: [
-            'https://firebasestorage.googleapis.com/v0/b/personal-portfolio-9a2f1.appspot.com/o/shopio%2Fshopio-1.png?alt=media&token=a6649940-6d0a-4283-bce9-778d3f04ca74',
             'https://firebasestorage.googleapis.com/v0/b/personal-portfolio-9a2f1.appspot.com/o/shopio%2Fshopio-2.png?alt=media&token=d5b778ad-1ce6-435f-b8ba-e1a5ebb885f9',
+            'https://firebasestorage.googleapis.com/v0/b/personal-portfolio-9a2f1.appspot.com/o/shopio%2Fshopio-1.png?alt=media&token=a6649940-6d0a-4283-bce9-778d3f04ca74',
             'https://firebasestorage.googleapis.com/v0/b/personal-portfolio-9a2f1.appspot.com/o/shopio%2Fshopio-3.png?alt=media&token=48548d4b-829f-4081-b782-28e9bc7da1f7',
             'https://firebasestorage.googleapis.com/v0/b/personal-portfolio-9a2f1.appspot.com/o/shopio%2Fshopio-4.png?alt=media&token=00a7c5a8-cf8d-4b63-b5a3-a6ad2a13b247',
             'https://firebasestorage.googleapis.com/v0/b/personal-portfolio-9a2f1.appspot.com/o/shopio%2Fshopio-5.png?alt=media&token=4f65fc0c-9692-4e03-879e-669119097b9d',
             'https://firebasestorage.googleapis.com/v0/b/personal-portfolio-9a2f1.appspot.com/o/shopio%2Fshopio-6.png?alt=media&token=e55ea527-a5b9-4c16-b4bc-69b097c50353',
             'https://firebasestorage.googleapis.com/v0/b/personal-portfolio-9a2f1.appspot.com/o/shopio%2Fshopio-7.png?alt=media&token=e529e57b-8463-4e95-ad0b-e86c96a64a80',
             'https://firebasestorage.googleapis.com/v0/b/personal-portfolio-9a2f1.appspot.com/o/shopio%2Fshopio-8.png?alt=media&token=922f8645-379b-423e-b226-a635ee314de7',
-            // '',
-        ],
+         ],
     },
     {
         id: 6,

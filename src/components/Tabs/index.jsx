@@ -1,9 +1,11 @@
 import React, {useCallback, useEffect, useRef, useState} from 'react';
-import {Link} from "react-router-dom";
 import {projects} from "../../data";
 import {BiSearch} from "react-icons/bi";
 import {IoClose} from "react-icons/io5";
 import {BsArrowLeftShort, BsArrowRightShort} from "react-icons/bs";
+// import {LazyLoadImage} from "react-lazy-load-image-component";
+import ProgressiveImage from "react-progressive-graceful-image";
+import DefaultLoadingImage from "../../assets/images/default-loading.jpg";
 
 export default function Tabs({scrollbar}) {
     const [active, setActive] = useState(-1);
@@ -114,43 +116,33 @@ const Slide = ({active, projects, hidden}) => {
     }
 
     return loaded && (
-        <div className="relative lg:p-10 md:p-5 w-full h-full">
-            <div className="flex items-center justify-center mb-10 gap-10">
+        <div className="relative w-full h-full flex items-center justify-center">
+            <div
+                className="relative lg:w-[1000px] z-50 bg-[#F8F9FB] transition-all duration-300 flex items-center justify-center rounded-md border border-white">
                 <button onClick={handlePrevImage}
-                        className={"relative z-50 font-semibold text-3xl text-black flex items-center justify-center w-[32px] h-[32px] bg-[rgba(255,255,255,.7)] rounded-full"}>
+                        className={"absolute top-[50%] left-[-50px] translate-y-[-50%] z-50 font-semibold text-4xl text-black flex items-center justify-center w-[36px] h-[36px] bg-[rgba(255,255,255,.7)] rounded-full"}>
                     <BsArrowLeftShort/>
                 </button>
-                {image &&
-                    <div
-                        className="relative z-50 transition-all duration-300 flex items-center justify-center rounded-md border border-white">
-                        <Image image={image} className={"w-auto h-[500px] rounded-md"}/>
-                    </div>
-                }
+                <ProgressiveImage src={image} placeholder={DefaultLoadingImage}>
+                    {(src, loading) => (
+                        <img src={src} alt="loading image"
+                             className={`image${loading ? " loading" : " loaded"} h-full rounded-md`}
+                        />
+                    )}
+                </ProgressiveImage>
                 <button onClick={handleNextImage}
-                        className={"relative z-50 font-semibold text-3xl text-black flex items-center justify-center w-[32px] h-[32px] bg-[rgba(255,255,255,.7)] rounded-full"}>
+                        className={"absolute top-[50%] right-[-50px] translate-y-[-50%] z-50 font-semibold text-4xl text-black flex items-center justify-center w-[36px] h-[36px] bg-[rgba(255,255,255,.7)] rounded-full"}>
                     <BsArrowRightShort/>
                 </button>
-            </div>
-            <div className="flex items-center justify-center gap-2">
-                {project.images.map((img, index) => (
-                    <button key={index} onClick={() => setIndex(index)}
-                            className={`${img === image ? 'border-white' : 'border-[transparent]'} relative z-50 transition-all border min-h-[80px] flex items-center justify-center rounded-md`}>
-                        <Image image={img} className={"min-h-[80px] max-h-[80px] rounded-md"}/>
-                    </button>
-                ))}
+                <p onClick={handleNextImage}
+                   className={"absolute left-[50%] bottom-[-60px] px-3 rounded-full z-50 font-bold text-lg text-black flex items-center justify-center bg-white"}>
+                    {index + 1} / {project?.images?.length || 0}
+                </p>
             </div>
         </div>
     )
 }
-const Image = ({image, className}) => {
-    const [didLoad, setLoad] = useState(false);
 
-
-    return (
-        <img src={`${image}`} alt={"project"} className={`${didLoad ? '' : 'blur'} ${className}`}
-             onLoad={() => setLoad(true)}/>
-    )
-}
 const Card = ({item, index, show}) => {
     let className = "group mt-[0px] "
     if (index % 3 === 2) className += "lg:mt-[60px] "
