@@ -3,7 +3,6 @@ import {projects} from "../../data";
 import {BiSearch} from "react-icons/bi";
 import {IoClose} from "react-icons/io5";
 import {BsArrowLeftShort, BsArrowRightShort} from "react-icons/bs";
-// import {LazyLoadImage} from "react-lazy-load-image-component";
 import ProgressiveImage from "react-progressive-graceful-image";
 import DefaultLoadingImage from "../../assets/images/default-loading.jpg";
 
@@ -48,7 +47,7 @@ export default function Tabs({scrollbar}) {
                             className="z-[100] cursor-pointer absolute right-[22px] top-[22px] w-[28px] h-[28px] rounded-full bg-white text-black flex items-center justify-center ">
                         <IoClose className="text-2xl"/>
                     </button>
-                    <button onClick={hidden} className="absolute left-0 right-0 top-0 bottom-0 z-[1] cursor-none"/>
+                    {/*<button onClick={hidden} className="absolute left-0 right-0 top-0 bottom-0 z-[1] cursor-none"/>*/}
                 </div>
             </div>
         </div>
@@ -59,25 +58,32 @@ const Slide = ({active, projects, hidden}) => {
     const [image, setImage] = useState(null);
     const [index, setIndex] = useState(-1);
     const [loaded, setLoaded] = useState(false);
-    const escFunction = useCallback((event) => {
-        if (event.key === "Escape") {
-            hidden();
-        }
-    }, []);
+
 
     useEffect(() => {
+        const keyboardFunction = (event) => {
+            if (event.key === "Escape") {
+                hidden();
+            }
+            // else if (event.key === 'ArrowRight') {
+            //     handleNextImage()
+            // } else if (event.key === 'ArrowLeft') {
+            //     handlePrevImage()
+            // }
+        }
+
         if (active === -1) {
             setProject(null);
-            document.removeEventListener("keydown", escFunction, false);
+            document.removeEventListener("keydown", keyboardFunction, false);
         } else {
             setProject(projects[active])
-            document.addEventListener("keydown", escFunction, false);
+            document.addEventListener("keydown", keyboardFunction, false);
         }
         return () => {
             setIndex(-1)
             setProject(null);
             setLoaded(false);
-            document.removeEventListener("keydown", escFunction, false);
+            document.removeEventListener("keydown", keyboardFunction, false);
         }
     }, [active])
 
@@ -115,19 +121,25 @@ const Slide = ({active, projects, hidden}) => {
             setIndex(prev => prev - 1)
     }
 
+
     return loaded && (
         <div className="relative w-full h-full flex items-center justify-center">
             <div
-                className="relative lg:w-[1000px] z-50 bg-[#F8F9FB] transition-all duration-300 flex items-center justify-center rounded-md border border-white">
+                className="relative lg:w-[1000px] z-50 transition-all duration-300 flex items-center justify-center">
                 <button onClick={handlePrevImage}
                         className={"absolute top-[50%] left-[-50px] translate-y-[-50%] z-50 font-semibold text-4xl text-black flex items-center justify-center w-[36px] h-[36px] bg-[rgba(255,255,255,.7)] rounded-full"}>
                     <BsArrowLeftShort/>
                 </button>
-                <ProgressiveImage src={image} placeholder={DefaultLoadingImage}>
-                    {(src, loading) => (
-                        <img src={src} alt="loading image"
-                             className={`image${loading ? " loading" : " loaded"} h-full rounded-md`}
-                        />
+                <ProgressiveImage src={image}>
+                    {(src, loading) => loading ? (
+                        <div id={"loader"} className={"loader"}>
+                            <div className="clock-loader"></div>
+                        </div>
+                    ) : (
+                        <div className="rounded-md border border-white h-full">
+                            <img src={src} alt="loading image" className={`h-full rounded-md`}
+                            />
+                        </div>
                     )}
                 </ProgressiveImage>
                 <button onClick={handleNextImage}
@@ -135,7 +147,7 @@ const Slide = ({active, projects, hidden}) => {
                     <BsArrowRightShort/>
                 </button>
                 <p onClick={handleNextImage}
-                   className={"absolute left-[50%] bottom-[-60px] px-3 rounded-full z-50 font-bold text-lg text-black flex items-center justify-center bg-white"}>
+                   className={"absolute left-[50%] bottom-[-60px] px-3 rounded-full z-50 font-semibold text-[1.05rem] text-black flex items-center justify-center bg-[rgba(255,255,255,.7)]"}>
                     {index + 1} / {project?.images?.length || 0}
                 </p>
             </div>

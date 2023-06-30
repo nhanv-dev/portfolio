@@ -69,15 +69,75 @@ export function SpotifySlide({active, project}) {
                         </p>
                     </div>
                     <div className="pl-3 border-l-4 border-[rgba(255,255,255,.1)]">
-                        <p className="font-bold tracking-[1px] text-[10px] uppercase text-[rgba(255,255,255,.7)] mb-[5px]">Client</p>
+                        <p className="font-bold tracking-[1px] text-[10px] uppercase text-[rgba(255,255,255,.7)] mb-[5px]">Technology</p>
                         <p className="font-bold text-[.9rem] text-[rgba(255,255,255,.9)]">
-                            Spotify Music
+                            Spotify for developer - React
                         </p>
                     </div>
                     <div className="pl-3 border-l-4 border-[rgba(255,255,255,.1)]">
                         <p className="font-bold tracking-[1px] text-[10px] uppercase text-[rgba(255,255,255,.7)] mb-[5px]">Agency</p>
                         <p className="font-bold text-[.9rem] text-[rgba(255,255,255,.9)]">
                             Personal Project
+                        </p>
+                    </div>
+                </div>
+            </div>
+            <a href={project.website} target={"_blank"}
+               className="hover:scale-[1.05] transition-all duration-300 ease-in-out inline-flex items-center justify-center gap-3 rounded-full px-3 py-2 max-w-[250px] border-[2px] border-[rgba(255,255,255,0.2)] focus:outline-none"
+               rel="noreferrer">
+                <span
+                    className="w-[30px] h-[30px] border-2 bg-white text-black rounded-full flex items-center justify-center">
+                    <BiChevronRight className="text-[22px] relative top-[1px] font-extrabold"/>
+                </span>
+                <span className="text-[12px] tracking-[4px] uppercase font-[700]">View case</span>
+            </a>
+        </div>
+    )
+}
+
+export function SpotifySlideV2({active, project}) {
+
+    return (
+        <div
+            className={active + " slide-text p-10 opacity-0 absolute left-0 top-0 transition-all delay-100 duration-[300ms] ease-in-out w-full"}>
+            <div className="w-full h-full flex items-center mb-5">
+                <span className="inline-block mt-1 mr-5 w-[40px] h-[2px] bg-[rgba(255,255,255,.1)]"></span>
+                <span
+                    className="font-[600] text-[.8rem] md:text-[1rem] tracking-[2px] capitalize color-white opacity-80">Project #{project.project_number}</span>
+            </div>
+            <svg width="100%" height="100px" className="hidden lg:flex">
+                <text x="0%" y="60%" textAnchor="left">
+                    Spotify - With Artist
+                </text>
+            </svg>
+            <svg width="100%" height="100px" className="visible lg:hidden">
+                <text x="0%" y="60%" textAnchor="left">
+                    Spotify
+                </text>
+            </svg>
+            <svg width="100%" height="100px" className="visible lg:hidden">
+                <text x="0%" y="60%" textAnchor="left">
+                    Webapp
+                </text>
+            </svg>
+            <div className="mb-10 w-full">
+                <div className="flex flex-wrap gap-5">
+                    <div className="pl-3 border-l-4 border-[rgba(255,255,255,.1)]">
+                        <p className="font-bold tracking-[1px] text-[10px] uppercase text-[rgba(255,255,255,.7)] mb-[5px]">Services</p>
+                        <p className="font-bold text-[.9rem] text-[rgba(255,255,255,.9)]">
+                            Spotify
+                        </p>
+                    </div>
+                    <div className="pl-3 border-l-4 border-[rgba(255,255,255,.1)]">
+                        <p className="font-bold tracking-[1px] text-[10px] uppercase text-[rgba(255,255,255,.7)] mb-[5px]">Technology</p>
+                        <p className="font-bold text-[.9rem] text-[rgba(255,255,255,.9)]">
+                            React - Node - MongoDB
+                        </p>
+                    </div>
+                    <div className="pl-3 border-l-4 border-[rgba(255,255,255,.1)]">
+                        <p className="font-bold tracking-[1px] text-[10px] uppercase text-[rgba(255,255,255,.7)] mb-[5px]">Agency</p>
+                        <p className="font-bold text-[.9rem] text-[rgba(255,255,255,.9)]">
+                            School Project
                         </p>
                     </div>
                 </div>
@@ -168,9 +228,9 @@ export function NoonpostSlide({active, project}) {
                         </p>
                     </div>
                     <div className="pl-3 border-l-4 border-[rgba(255,255,255,.1)]">
-                        <p className="font-bold tracking-[1px] text-[10px] uppercase text-[rgba(255,255,255,.7)] mb-[5px]">Client</p>
+                        <p className="font-bold tracking-[1px] text-[10px] uppercase text-[rgba(255,255,255,.7)] mb-[5px]">Technology</p>
                         <p className="font-bold text-[.9rem] text-[rgba(255,255,255,.9)]">
-                            Noonpost
+                            NodeJS - Handlebar - MongoDB
                         </p>
                     </div>
                     <div className="pl-3 border-l-4 border-[rgba(255,255,255,.1)]">
@@ -365,13 +425,13 @@ export function DepotSlide({active, project}) {
                     <div className="pl-3 border-l-4 border-[rgba(255,255,255,.1)]">
                         <p className="font-bold tracking-[1px] text-[10px] uppercase text-[rgba(255,255,255,.7)] mb-[5px]">Technology</p>
                         <p className="font-bold text-[.9rem] text-[rgba(255,255,255,.9)]">
-                            React - Spring - MySQL
+                            React - Spring Boot - MySQL
                         </p>
                     </div>
                     <div className="pl-3 border-l-4 border-[rgba(255,255,255,.1)]">
                         <p className="font-bold tracking-[1px] text-[10px] uppercase text-[rgba(255,255,255,.7)] mb-[5px]">Agency</p>
                         <p className="font-bold text-[.9rem] text-[rgba(255,255,255,.9)]">
-                            Personal Project
+                            School Project
                         </p>
                     </div>
                 </div>

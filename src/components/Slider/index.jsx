@@ -150,7 +150,7 @@ const SlideImage = ({image, number, active}) => {
                 className="slide-image-show w-[100%] h-[100%] absolute bg-no-repeat bg-center bg-cover after:absolute after:top-0 after:left-0 after:right-0 after:bottom-0 after:bg-[rgba(0,0,0,.3)]"
                 style={{backgroundImage: `url(${image})`}}/>
             <div
-                style={{WebkitTextStroke: '1px rgba(255, 255, 255, 0.5)'}}
+                style={{WebkitTextStroke: '3px rgba(255, 255, 255, 0.5)'}}
                 className="absolute right-[30px] bottom-[90px] text-[12vw] text-[rgba(255,255,255,0.05)] ">
                 {number}
             </div>

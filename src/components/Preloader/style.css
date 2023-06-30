@@ -31,8 +31,7 @@
     border-radius: 50%;
 }
 
-.clock-loader::before,
-.clock-loader::after {
+.clock-loader::before, .clock-loader::after {
     position: absolute;
     content: "";
     top: calc(var(--clock-radius) * 0.25);
