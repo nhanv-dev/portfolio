@@ -50,7 +50,7 @@ function About() {
                         </div>
 
                         <div className="group relative w-[max-content] float-left mr-[8px] ">
-                            <button type="submit"
+                            <button type="submit" tabIndex={-1}
                                     className="flex items-center gap-4 group-hover:translate-x-[8px] group-hover:translate-y-[8px] transition-transform ease duration-[300ms] z-[2] opacity-100 relative tracking-[2px] font-bold text-[14px] text-black px-4 py-2 bg-[#fff]">
                                 <FiDownload className="text-[1.2rem] text-[#14bfb5]"/> Download CV
                             </button>

@@ -80,27 +80,30 @@ export default function ContactFixed({scrollbar}) {
                                         <h3 className="font-bold mb-8 text-[22px] tracking-[2px] pl-[20px] block relative border-l-[2px]">
                                             Get in Touch with Me !
                                         </h3>
-                                        <form className="mb-[100px]">
+                                        <form className="mb-[100px]" tabIndex={-1}>
                                             <div className="mb-8">
-                                                <label htmlFor="" className="block mb-3 font-bold">Your name *</label>
-                                                <input type="text" tabIndex="-1" placeholder="Type your name"
+                                                <label tabIndex={-1} htmlFor="" className="block mb-3 font-bold">Your
+                                                    name *</label>
+                                                <input type="text" tabIndex={-1} placeholder="Type your name"
                                                        className="cursor-pointer focus:outline-0 block bg-black font-semibold px-3 py-2 w-full"/>
                                             </div>
                                             <div className="mb-8">
-                                                <label htmlFor="" className="block mb-3 font-bold">Your E-mail *</label>
-                                                <input type="text" tabIndex="-1" placeholder="Type your Email Address"
+                                                <label tabIndex={-1} htmlFor="" className="block mb-3 font-bold">Your
+                                                    E-mail *</label>
+                                                <input type="text" tabIndex={-1} placeholder="Type your Email Address"
                                                        className="cursor-pointer focus:outline-0 block bg-black font-semibold px-3 py-2 w-full"/>
                                             </div>
                                             <div className="mb-8">
-                                                <label htmlFor="" className="block mb-3 font-bold">What's up</label>
-                                                <textarea tabIndex="-1"
+                                                <label tabIndex={-1} htmlFor="" className="block mb-3 font-bold">What's
+                                                    up</label>
+                                                <textarea tabIndex={-1}
                                                           placeholder="Tell me about you and the world"
                                                           className="cursor-pointer focus:outline-0 block bg-black font-semibold px-3 py-2 w-full">
 
                                                 </textarea>
                                             </div>
                                             <div className="group relative w-[max-content] float-right mr-[8px] ">
-                                                <input type="submit" value="Send message" tabIndex="-1"
+                                                <input type="submit" value="Send message" tabIndex={-1}
                                                        className="group-hover:translate-x-[8px] block group-hover:translate-y-[8px] transition-transform ease duration-[300ms] z-[1] opacity-100 relative uppercase tracking-[2px] font-semibold text-[13px] p-4 bg-black">
                                                 </input>
                                                 <div

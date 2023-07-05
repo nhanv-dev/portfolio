@@ -5,6 +5,7 @@ import {IoClose} from "react-icons/io5";
 import {BsArrowLeftShort, BsArrowRightShort} from "react-icons/bs";
 import ProgressiveImage from "react-progressive-graceful-image";
 import DefaultLoadingImage from "../../assets/images/default-loading.jpg";
+import Card from "./Card";
 
 export default function Tabs({scrollbar}) {
     const [active, setActive] = useState(-1);
@@ -43,11 +44,11 @@ export default function Tabs({scrollbar}) {
                 <div ref={containerRef}
                      className={`${active !== -1 ? 'visible opacity-100' : 'invisible opacity-0'} transition-opacity duration-500 backdrop-blur w-[100vw] h-[100vh] left-0 top-0 fixed z-[1000] flex items-center bg-[rgba(0,0,0,0.7)]`}>
                     <Slide active={active} projects={projects} hidden={hidden}/>
-                    <button onClick={hidden}
-                            className="z-[100] cursor-pointer absolute right-[22px] top-[22px] w-[28px] h-[28px] rounded-full bg-white text-black flex items-center justify-center ">
+                    <button tabIndex={-1} onClick={hidden}
+                            className="z-[100] cursor-pointer absolute right-[22px] top-[22px] w-[32px] h-[32px] rounded-full bg-[rgba(255,255,255,.7)] hover:bg-white text-black flex items-center justify-center ">
                         <IoClose className="text-2xl"/>
                     </button>
-                    {/*<button onClick={hidden} className="absolute left-0 right-0 top-0 bottom-0 z-[1] cursor-none"/>*/}
+                    {/*<button tabIndex={-1} onClick={hidden} className="absolute left-0 right-0 top-0 bottom-0 z-[1] cursor-none"/>*/}
                 </div>
             </div>
         </div>
@@ -58,7 +59,6 @@ const Slide = ({active, projects, hidden}) => {
     const [image, setImage] = useState(null);
     const [index, setIndex] = useState(-1);
     const [loaded, setLoaded] = useState(false);
-
 
     useEffect(() => {
         const keyboardFunction = (event) => {
@@ -121,16 +121,15 @@ const Slide = ({active, projects, hidden}) => {
             setIndex(prev => prev - 1)
     }
 
-
     return loaded && (
         <div className="relative w-full h-full flex items-center justify-center">
             <div
                 className="relative lg:w-[1000px] z-50 transition-all duration-300 flex items-center justify-center">
-                <button onClick={handlePrevImage}
-                        className={"absolute top-[50%] left-[-50px] translate-y-[-50%] z-50 font-semibold text-4xl text-black flex items-center justify-center w-[36px] h-[36px] bg-[rgba(255,255,255,.7)] rounded-full"}>
+                <button tabIndex={-1} onClick={handlePrevImage}
+                        className={"absolute top-[50%] left-[-50px] translate-y-[-50%] z-50 font-semibold text-4xl text-black outline-none flex items-center justify-center w-[32px] h-[32px] bg-[rgba(255,255,255,.7)] hover:bg-white rounded-full"}>
                     <BsArrowLeftShort/>
                 </button>
-                <ProgressiveImage src={image}>
+                <ProgressiveImage src={image} placeholder={null}>
                     {(src, loading) => loading ? (
                         <div id={"loader"} className={"loader"}>
                             <div className="clock-loader"></div>
@@ -142,12 +141,12 @@ const Slide = ({active, projects, hidden}) => {
                         </div>
                     )}
                 </ProgressiveImage>
-                <button onClick={handleNextImage}
-                        className={"absolute top-[50%] right-[-50px] translate-y-[-50%] z-50 font-semibold text-4xl text-black flex items-center justify-center w-[36px] h-[36px] bg-[rgba(255,255,255,.7)] rounded-full"}>
+                <button tabIndex={-1} onClick={handleNextImage}
+                        className={"absolute top-[50%] right-[-50px] translate-y-[-50%] z-50 font-semibold text-4xl text-black outline-none flex items-center justify-center w-[32px] h-[32px] bg-[rgba(255,255,255,.7)] hover:bg-white rounded-full"}>
                     <BsArrowRightShort/>
                 </button>
                 <p onClick={handleNextImage}
-                   className={"absolute left-[50%] bottom-[-60px] px-3 rounded-full z-50 font-semibold text-[1.05rem] text-black flex items-center justify-center bg-[rgba(255,255,255,.7)]"}>
+                   className={"absolute left-[50%] bottom-[-60px] px-3 rounded-full z-50 font-semibold text-[1.05rem] text-black flex items-center justify-center bg-[rgba(255,255,255,.7)] hover:bg-white"}>
                     {index + 1} / {project?.images?.length || 0}
                 </p>
             </div>
@@ -155,54 +154,3 @@ const Slide = ({active, projects, hidden}) => {
     )
 }
 
-const Card = ({item, index, show}) => {
-    let className = "group mt-[0px] "
-    if (index % 3 === 2) className += "lg:mt-[60px] "
-    if (index % 3 === 1) className += "lg:mt-[30px] "
-    if (index % 3 === 0) className += "lg:mt-[0px] "
-    if (index % 2 === 1) className += "md:mt-[30px] "
-    if (index % 2 === 0) className += "md:mt-[0px] "
-
-
-    return (
-        <div className={className}>
-            <button onClick={() => show(index)} tabIndex={-1}
-                    className="outline-none group relative block mb-5 w-full h-[300px] cursor-pointer">
-                <div
-                    className="absolute top-0 left-0 right-0 bottom-0 after:absolute after:top-[-1px] after:left-[-1px] after:right-[-1px] after:bottom-[-1px] after:bg-black after:opacity-[.3]">
-                    <div style={{backgroundImage: `url(${item.card_image})`}}
-                         className="w-full h-full bg-cover bg-no-repeat bg-center"/>
-                    <div
-                        className="absolute top-[50%] left-[50%] translate-x-[-50%] translate-y-[-50%] z-10 opacity-0 group-hover:opacity-100 transition-all">
-                        <div
-                            className="backdrop-blur-md flex items-center justify-center min-w-[40px] min-h-[40px] bg-white/80 rounded-full text-[#000] text-[1.45rem]">
-                            <BiSearch className="relative top-[1px] left-[.75px] "/>
-                        </div>
-                    </div>
-                </div>
-                <div
-                    className="absolute top-[-1px] left-[-1px] bottom-[-1px] w-0 group-hover:w-[10px] bg-black transition-all duration-500"/>
-                <div
-                    className="absolute top-[-1px] right-[-1px] bottom-[-1px] w-0 group-hover:w-[10px] bg-black transition-all duration-500"/>
-                <div
-                    className="absolute left-[-1px] right-[-1px] top-[-1px] h-0 group-hover:h-[10px] bg-black transition-all duration-500"/>
-                <div
-                    className="absolute left-[-1px] right-[-1px] bottom-[-1px] h-0 group-hover:h-[10px] bg-black transition-all duration-500"/>
-            </button>
-            <div className="pl-4 border-l-2">
-                <p className="text-[1.25rem] font-bold mb-1 cursor-pointer outline-none" tabIndex={-1}
-                   dangerouslySetInnerHTML={{__html: item.card_title}}>
-                </p>
-                <div
-                    className="relative overflow-hidden leading-6 mt-2 text-[#14bfb5] font-bold text-[14px]">
-                    <p className="translate-y-[0] group-hover:translate-y-[-100%] transition-all duration-300 ease-in-out"
-                       dangerouslySetInnerHTML={{__html: item.card_desc}}></p>
-                    <a href={item.website} target="_blank" rel="noreferrer" tabIndex={-1}
-                       className="block absolute top-[100%] left-0 group-hover:translate-y-[-100%] transition-all duration-300 ease-in-out">
-                        Visit Website
-                    </a>
-                </div>
-            </div>
-        </div>
-    )
-}
