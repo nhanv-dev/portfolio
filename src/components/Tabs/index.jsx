@@ -124,12 +124,12 @@ const Slide = ({ active, projects, hidden }) => {
     return loaded && (
         <div className="relative w-full h-full flex items-center justify-center">
             <div
-                className="relative lg:w-[1000px] z-50 transition-all duration-300 flex items-center justify-center">
+                className="relative lg:w-[950px] z-50 transition-all duration-300 flex items-center justify-center">
                 <button tabIndex={-1} onClick={handlePrevImage}
                     className={"absolute top-[50%] left-[-50px] translate-y-[-50%] z-50 font-semibold text-4xl text-black outline-none flex items-center justify-center w-[32px] h-[32px] bg-[rgba(255,255,255,.7)] hover:bg-white rounded-full"}>
                     <BsArrowLeftShort />
                 </button>
-                <ProgressiveImage src={image} placeholder={null}>
+                <ProgressiveImage src={image} placeholder={'loading'}>
                     {(src, loading) => (
                         <div className="rounded-md border border-white min-h-[300px] min-w-[800px] relative">
                             {loading ?
