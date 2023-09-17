@@ -6,7 +6,7 @@ function Preloader() {
         const runLoader = setTimeout(() => {
             // console.log(document.querySelector('#loader'))
             document.querySelector('#loader').style.display = 'none';
-        }, 1200)
+        }, 600)
         return () => {
             clearTimeout(runLoader)
         }

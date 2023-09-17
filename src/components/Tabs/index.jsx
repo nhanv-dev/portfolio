@@ -1,13 +1,11 @@
-import React, {useCallback, useEffect, useRef, useState} from 'react';
-import {projects} from "../../data";
-import {BiSearch} from "react-icons/bi";
-import {IoClose} from "react-icons/io5";
-import {BsArrowLeftShort, BsArrowRightShort} from "react-icons/bs";
+import React, { useEffect, useRef, useState } from 'react';
+import { BsArrowLeftShort, BsArrowRightShort } from "react-icons/bs";
+import { IoClose } from "react-icons/io5";
 import ProgressiveImage from "react-progressive-graceful-image";
-import DefaultLoadingImage from "../../assets/images/default-loading.jpg";
+import { projects } from "../../data";
 import Card from "./Card";
 
-export default function Tabs({scrollbar}) {
+export default function Tabs({ scrollbar }) {
     const [active, setActive] = useState(-1);
     const [top, setTop] = useState(0);
     const containerRef = useRef(null)
@@ -15,12 +13,12 @@ export default function Tabs({scrollbar}) {
     function show(index) {
         setActive(index)
         containerRef.current.style.transform = `translateY(${top}px)`;
-        scrollbar.scrollbar?.updatePluginOptions('modal', {open: true});
+        scrollbar.scrollbar?.updatePluginOptions('modal', { open: true });
     }
 
     function hidden() {
         setActive(-1);
-        scrollbar.scrollbar?.updatePluginOptions('modal', {open: false});
+        scrollbar.scrollbar?.updatePluginOptions('modal', { open: false });
     }
 
     function handleScrollingTabs(e) {
@@ -38,29 +36,28 @@ export default function Tabs({scrollbar}) {
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-10">
                 {projects.map((project, index) => (
                     <div key={project.slug}>
-                        <Card item={project} index={index} show={show}/>
+                        <Card item={project} index={index} show={show} />
                     </div>
                 ))}
                 <div ref={containerRef}
-                     className={`${active !== -1 ? 'visible opacity-100' : 'invisible opacity-0'} transition-opacity duration-500 backdrop-blur w-[100vw] h-[100vh] left-0 top-0 fixed z-[1000] flex items-center bg-[rgba(0,0,0,0.7)]`}>
-                    <Slide active={active} projects={projects} hidden={hidden}/>
+                    className={`${active !== -1 ? 'visible opacity-100' : 'invisible opacity-0'} transition-opacity duration-500 backdrop-blur w-[100vw] h-[100vh] left-0 top-0 fixed z-[1000] flex items-center bg-[rgba(0,0,0,0.7)]`}>
+                    <Slide active={active} projects={projects} hidden={hidden} />
                     <button tabIndex={-1} onClick={hidden}
-                            className="z-[100] cursor-pointer absolute right-[22px] top-[22px] w-[32px] h-[32px] rounded-full bg-[rgba(255,255,255,.7)] hover:bg-white text-black flex items-center justify-center ">
-                        <IoClose className="text-2xl"/>
+                        className="z-[100] cursor-pointer absolute right-[22px] top-[22px] w-[32px] h-[32px] rounded-full bg-[rgba(255,255,255,.7)] hover:bg-white text-black flex items-center justify-center ">
+                        <IoClose className="text-2xl" />
                     </button>
-                    {/*<button tabIndex={-1} onClick={hidden} className="absolute left-0 right-0 top-0 bottom-0 z-[1] cursor-none"/>*/}
                 </div>
             </div>
         </div>
     );
 }
-const Slide = ({active, projects, hidden}) => {
+const Slide = ({ active, projects, hidden }) => {
     const [project, setProject] = useState(null);
     const [image, setImage] = useState(null);
     const [index, setIndex] = useState(-1);
     const [loaded, setLoaded] = useState(false);
 
-    useEffect(() => {
+     useEffect(() => {
         const keyboardFunction = (event) => {
             if (event.key === "Escape") {
                 hidden();
@@ -85,6 +82,7 @@ const Slide = ({active, projects, hidden}) => {
             setLoaded(false);
             document.removeEventListener("keydown", keyboardFunction, false);
         }
+        // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [active])
 
     useEffect(() => {
@@ -97,6 +95,7 @@ const Slide = ({active, projects, hidden}) => {
             setIndex(-1)
             setLoaded(false)
         }
+        // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [project])
 
     useEffect(() => {
@@ -105,6 +104,7 @@ const Slide = ({active, projects, hidden}) => {
         } else {
             setImage(project.images[index])
         }
+        // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [index])
 
     const handleNextImage = () => {
@@ -126,27 +126,31 @@ const Slide = ({active, projects, hidden}) => {
             <div
                 className="relative lg:w-[1000px] z-50 transition-all duration-300 flex items-center justify-center">
                 <button tabIndex={-1} onClick={handlePrevImage}
-                        className={"absolute top-[50%] left-[-50px] translate-y-[-50%] z-50 font-semibold text-4xl text-black outline-none flex items-center justify-center w-[32px] h-[32px] bg-[rgba(255,255,255,.7)] hover:bg-white rounded-full"}>
-                    <BsArrowLeftShort/>
+                    className={"absolute top-[50%] left-[-50px] translate-y-[-50%] z-50 font-semibold text-4xl text-black outline-none flex items-center justify-center w-[32px] h-[32px] bg-[rgba(255,255,255,.7)] hover:bg-white rounded-full"}>
+                    <BsArrowLeftShort />
                 </button>
                 <ProgressiveImage src={image} placeholder={null}>
-                    {(src, loading) => loading ? (
-                        <div id={"loader"} className={"loader"}>
-                            <div className="clock-loader"></div>
-                        </div>
-                    ) : (
-                        <div className="rounded-md border border-white h-full">
-                            <img src={src} alt="loading image" className={`h-full rounded-md`}
-                            />
+                    {(src, loading) => (
+                        <div className="rounded-md border border-white min-h-[300px] min-w-[800px] relative">
+                            {loading ?
+                                <div id={"loader"} className={"loader-new rounded-md"}>
+                                    <div className="clock-loader"></div>
+                                </div> :
+                                <img
+                                    src={src}
+                                    alt="loading"
+                                    className={`h-full rounded-md`}
+                                />
+                            }
                         </div>
                     )}
                 </ProgressiveImage>
                 <button tabIndex={-1} onClick={handleNextImage}
-                        className={"absolute top-[50%] right-[-50px] translate-y-[-50%] z-50 font-semibold text-4xl text-black outline-none flex items-center justify-center w-[32px] h-[32px] bg-[rgba(255,255,255,.7)] hover:bg-white rounded-full"}>
-                    <BsArrowRightShort/>
+                    className={"absolute top-[50%] right-[-50px] translate-y-[-50%] z-50 font-semibold text-4xl text-black outline-none flex items-center justify-center w-[32px] h-[32px] bg-[rgba(255,255,255,.7)] hover:bg-white rounded-full"}>
+                    <BsArrowRightShort />
                 </button>
                 <p onClick={handleNextImage}
-                   className={"absolute left-[50%] bottom-[-60px] px-3 rounded-full z-50 font-semibold text-[1.05rem] text-black flex items-center justify-center bg-[rgba(255,255,255,.7)] hover:bg-white"}>
+                    className={"absolute left-[50%] translate-x-[-50%] bottom-[-60px] px-3 rounded-full z-50 font-semibold text-[0.95rem] text-black flex items-center justify-center bg-[rgba(255,255,255,.7)] hover:bg-white"}>
                     {index + 1} / {project?.images?.length || 0}
                 </p>
             </div>
